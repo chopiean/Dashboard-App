@@ -1,14 +1,17 @@
 import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
+import { TaskProvider } from "./context/TaskContext";
 
 function App() {
   return (
-    <div className="flex h-screen bg-gray-900 text-gray-100">
-      <Sidebar></Sidebar>
-      <div className="flex flex-col flex-1">
-        <Header></Header>
+    <TaskProvider>
+      <div className="flex h-screen bg-gray-900 text-gray-100">
+        <Sidebar></Sidebar>
+        <div className="flex flex-col flex-1">
+          <Header></Header>
+        </div>
       </div>
-    </div>
+    </TaskProvider>
   );
 }
 

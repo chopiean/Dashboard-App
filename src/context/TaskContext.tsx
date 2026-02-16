@@ -1,4 +1,10 @@
-import { createContext, useEffect, useReducer, type ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+  type ReactNode,
+} from "react";
 import type { TaskAction, TaskState } from "../type";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
@@ -69,8 +75,15 @@ export function TaskProvider({ children }: { children: ReactNode }) {
         dispatch,
       }}
     >
-      {" "}
       {children}
     </TaskContext.Provider>
   );
+}
+
+export function useTasks() {
+  const context = useContext(TaskContext);
+
+  if (!context) throw new Error("useTasks must be used inside TaskProvider");
+
+  return context;
 }
