@@ -6,9 +6,11 @@ import SearchBar from "./components/SearchBar";
 import { useState } from "react";
 import type { TPage } from "./type";
 import TaskForm from "./components/TaskForm";
+import TaskList from "./components/TaskList";
 
 function App() {
   const [userQuery, setUserQuery] = useState("");
+  const [taskQuery, setTaskQuery] = useState("");
   const [page, setPage] = useState<TPage>("tasks");
   return (
     <TaskProvider>
@@ -23,7 +25,14 @@ function App() {
 
           <main className="p-4 overflow-y-auto flex-1">
             {page === "tasks" ? (
-              <TaskForm></TaskForm>
+              <>
+                <TaskForm></TaskForm>
+                <SearchBar
+                  onDebounceChange={setTaskQuery}
+                  placeholder="Search task..."
+                ></SearchBar>
+                <TaskList></TaskList>
+              </>
             ) : (
               <>
                 <SearchBar

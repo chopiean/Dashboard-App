@@ -39,6 +39,8 @@ const TaskForm = (props: Props) => {
       type: "add",
       payload: newTask,
     });
+
+    reset();
   };
   return (
     <form
