@@ -5,6 +5,7 @@ import UserTable from "./components/UserTable";
 import SearchBar from "./components/SearchBar";
 import { useState } from "react";
 import type { TPage } from "./type";
+import TaskForm from "./components/TaskForm";
 
 function App() {
   const [userQuery, setUserQuery] = useState("");
@@ -22,12 +23,12 @@ function App() {
 
           <main className="p-4 overflow-y-auto flex-1">
             {page === "tasks" ? (
-              ""
+              <TaskForm></TaskForm>
             ) : (
               <>
                 <SearchBar
                   onDebounceChange={setUserQuery}
-                  placeholder="Search user by name"
+                  placeholder="Search..."
                 ></SearchBar>
                 <UserTable search={userQuery}></UserTable>
               </>

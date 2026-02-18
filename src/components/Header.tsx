@@ -8,7 +8,7 @@ const Header = (props: Props) => {
       <h1 className="text-xl text-white font-bold">Dashboard App</h1>
 
       <div className="flex items-center gap-3">
-        <img src="" alt="avatar" className="w-8 h-8 rounded-full"></img>
+        <img alt="avatar" className="w-8 h-8 rounded-full"></img>
         <button className="bg-red-600 hover:bg-red-700 px-3 py-1 rounded text-white">
           Logout
         </button>
