@@ -1,33 +1,24 @@
-import React, { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { useTasks } from "../context/TaskContext";
 
-type Props = {};
+type Props = {
+  search: string;
+};
 
-const TaskList = (props: Props) => {
+const TaskList = ({ search }: Props) => {
   const {
     state: { tasks, users },
     dispatch,
   } = useTasks();
 
-  const [query, setQuery] = useState("");
-
   const filteredTasks = useMemo(() => {
-    const q = query.trim().toLowerCase();
+    const q = search.trim().toLowerCase();
     if (!q) return tasks;
     return tasks.filter((t) => t.title.toLowerCase().includes(q));
-  }, [tasks, query]);
+  }, [tasks, search]);
 
   return (
     <div className="bg-gray-800 rounded shadow divide-gray-200">
-      <div className="p-3 border-b border-gray-700">
-        <input
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search tasks..."
-          className="w-full px-3 py-2 rounded bg-gray-900 text-gray-100 border-gray-700"
-        ></input>
-      </div>
-
       {filteredTasks.length === 0 && (
         <div className="p-4 text-gray-500">No tasks found</div>
       )}

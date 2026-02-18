@@ -6,7 +6,7 @@ export type User = {
 };
 
 export type Task = {
-  id: number;
+  id: string;
   title: string;
   done: boolean;
   assignedTo: number;
@@ -22,10 +22,10 @@ export type TaskAction =
     }
   | {
       type: "toggle";
-      payload: number;
+      payload: string;
     }
   | {
       type: "remove";
-      payload: number;
+      payload: string;
     };
 export type TPage = "tasks" | "users";

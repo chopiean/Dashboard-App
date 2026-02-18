@@ -1,11 +1,8 @@
-import React from "react";
 import { useTasks } from "../context/TaskContext";
 import z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import type { Task } from "../type";
-
-type Props = {};
 
 const schema = z.object({
   title: z.string().min(2, "Title too short"),
@@ -13,7 +10,7 @@ const schema = z.object({
 });
 type FormData = z.infer<typeof schema>;
 
-const TaskForm = (props: Props) => {
+const TaskForm = () => {
   const {
     state: { users },
     dispatch,
@@ -26,10 +23,14 @@ const TaskForm = (props: Props) => {
     formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(schema),
+    defaultValues: {
+      title: "",
+      assignedTo: users[0]?.id,
+    },
   });
   const onSubmit = (data: FormData) => {
     const newTask: Task = {
-      id: Date.now(),
+      id: crypto.randomUUID(),
       title: data.title,
       done: false,
       assignedTo: data.assignedTo,

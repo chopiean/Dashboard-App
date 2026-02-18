@@ -31,13 +31,13 @@ function App() {
                   onDebounceChange={setTaskQuery}
                   placeholder="Search task..."
                 ></SearchBar>
-                <TaskList></TaskList>
+                <TaskList search={taskQuery}></TaskList>
               </>
             ) : (
               <>
                 <SearchBar
                   onDebounceChange={setUserQuery}
-                  placeholder="Search..."
+                  placeholder="Search user..."
                 ></SearchBar>
                 <UserTable search={userQuery}></UserTable>
               </>

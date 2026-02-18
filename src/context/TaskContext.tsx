@@ -48,7 +48,7 @@ export function TaskProvider({ children }: { children: ReactNode }) {
     {
       tasks: [
         {
-          id: 1,
+          id: "1",
           title: "learn TS",
           done: false,
           assignedTo: 1,
@@ -66,7 +66,9 @@ export function TaskProvider({ children }: { children: ReactNode }) {
   );
   const [state, dispatch] = useReducer(taskReducer, persistedState);
 
-  useEffect(() => {}, [state, setPersistedState]);
+  useEffect(() => {
+    setPersistedState(state);
+  }, [state, setPersistedState]);
 
   return (
     <TaskContext.Provider
