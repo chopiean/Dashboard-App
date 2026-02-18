@@ -79,6 +79,7 @@ export function TaskProvider({ children }: { children: ReactNode }) {
     </TaskContext.Provider>
   );
 }
+/* eslint-disable react-refresh/only-export-components */
 
 export function useTasks() {
   const context = useContext(TaskContext);

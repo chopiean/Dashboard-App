@@ -28,3 +28,4 @@ export type TaskAction =
       type: "remove";
       payload: number;
     };
+export type TPage = "tasks" | "users";
